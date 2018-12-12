@@ -191,5 +191,19 @@ public class SemiFinals {
     {
         System.out.println("\nThe winners of the Semi-Finals are: " + semiWinner[0] + " & " + semiWinner[1]);
         System.out.println("They will be facing each other in the Finals for the championship");
+        
     }
+    
+    public String returnSemiWinners(int x)
+    {
+        if(x==0)
+        {
+            return semiWinner[0];
+        }
+        else
+        {
+            return semiWinner[1];
+        }
+    }
+    
 }

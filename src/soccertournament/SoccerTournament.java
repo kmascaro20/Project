@@ -17,6 +17,8 @@ public class SoccerTournament {
     private static  GroupData[] MAINGROUP = new GroupData[100];
     private static String[] groupWinners = new String[100];
     private static SemiFinals SEMIS = new SemiFinals();
+    private static String[] semiWinners = new String[100];
+    private static Finals FINALS = new Finals();
 
     /**
      * @param args the command line arguments
@@ -30,6 +32,8 @@ public class SoccerTournament {
         writeGroupWinners();
         getGroupWinners();
         semiFinalMatches();
+        getSemiWinners();
+        finalMatch();
     }
     
     private static void getGroupNames ()
@@ -118,5 +122,25 @@ public class SoccerTournament {
         SEMIS.getSemiWinners();
     }
     
+    private static void getSemiWinners()
+    {
+        for(int i = 0; i<(groups.length / 2); i++)
+        {
+            semiWinners[i] = SEMIS.returnSemiWinners(i);
+        }
+    }
     
+        private static void finalMatch() throws IOException
+    {
+        FINALS.setNumOfGroups(numOfGroups/2);
+            for(int i = 0; i<(groups.length / 2); i++)
+            {
+                FINALS.setWinner(semiWinners[i], i);
+            }
+            
+        FINALS.finalMatch();
+        FINALS.finalMatchData();
+        FINALS.writeFinalMatch();
+        FINALS.getFinalWinner();
+    }
 }
